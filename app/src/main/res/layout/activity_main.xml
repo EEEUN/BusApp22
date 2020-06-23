@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="버스 도착정보"
+            android:text="버스 정보"
             android:textSize="30dp" />
     </LinearLayout>
 
@@ -37,6 +37,7 @@
             android:background="@null"
             android:ems="10"
             android:hint="버스 번호를 입력해주세요."
+            android:gravity="center"
             android:inputType="textPersonName"
             android:text="" />
 
@@ -47,7 +48,8 @@
             android:layout_weight="2"
             android:background="@null"
             android:ems="10"
-            android:hint="정류장 번호를 입력해주세요."
+            android:hint="정류장 번호를 정확하게 입력해주세요."
+            android:gravity="center"
             android:inputType="textPersonName"
             android:text="" />
 
@@ -72,6 +74,7 @@
             android:id="@+id/showInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text=""
             android:textSize="20dp" />
     </ScrollView>

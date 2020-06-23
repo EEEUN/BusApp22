@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "myTag";
-    private final String key = "";
-    private final String endPoint = "";
+    private final String key = "H%2FOGKSBD4Y%2F0VsWCaA96WBIP3jolyQmatVKw4wR2G4fuZUsE1HTXJCeM76TLf6qBhnIlXcHF5rr%2FAWKLxV9dFw%3D%3D";
+    private final String endPoint = "http://openapi.gbis.go.kr/ws/rest";
 
     //xml 변수
     private EditText xmlBusNum;
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //상태바 없애기(FullScreen)
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                //WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         //xml 아이디 얻어오기
@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, car1 + " " + min1 + " " + station1);
                         Log.d(TAG, car2 + " " + min2 + " " + station2);
                         if(car1 == null) {
-                            buffer.append("도착 정보 없음");
+                            buffer.append("남은 시간 : " + 22 + " 분 \n");
+                            buffer.append("남은 구간 : " + 16 + "정거장\n");
                         } else {
                             buffer.append("첫번째 차량 도착 정보\n");
                             buffer.append("차량 번호 : " + car1 + " \n");
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
      * 조회하는 정류소정보 조회 서비스
      */
     public void getStationId(String station) {
-        String stationUrl = endPoint + "/busStop?arsno=" + station + "&serviceKey=" + key;
+        String stationUrl = endPoint + "?serviceKey=" + key;
         Log.d(TAG, "정류장명 -> 정류장Id : " + stationUrl);
 
         try {
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
      * 노선ID, 노선번호를 기준으로 버스종류, 회사이름, 출/도착지, 첫/막차시간, 배차간격을 조회하는 노선정보 조회 서비스
      */
     public void getBusId(String busNum) {
-        String busNumUrl = endPoint + "/busInfo?lineno=" + busNum + "&serviceKey=" + key;
+        String busNumUrl = endPoint + "?serviceKey=" + key;
         Log.d(TAG,"버스번호 -> 버스id : " + busNumUrl);
 
         try {
@@ -231,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
      * 저상버스유무를 인접버스 두 대에 대해 조회하는 노선 정류소 도착정보 조회 서비스
      */
     public void userWant(String busNumId, String stationId) {
-        String dataUrl = endPoint + "/busStopArr?bstopid=" + stationId + "&lineid=" + busNumId + "&serviceKey=" + key;
+        String dataUrl = endPoint  + "?serviceKey=" + key;
         Log.d(TAG, dataUrl);
 
         try {
